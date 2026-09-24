@@ -481,6 +481,7 @@
             if (inputPass === PORTAL_PASSWORD) {
                 document.getElementById("password-lock-screen").style.display = "none";
                 document.getElementById("welcomeOverlay").style.display = "flex";
+                openFullScreen(); // Auto Fullscreen on Password Submit
             } else {
                 errDiv.style.display = "block";
                 document.getElementById("examPasswordInput").value = "";
@@ -491,7 +492,7 @@
         const SCRIPT_URL_2 = "";
         const SCRIPT_URL_3 = "";
 
-        const EXAM_START_TIME = new Date("2026-09-24T09:46:00");
+        const EXAM_START_TIME = new Date("2026-09-10T20:40:30");
         const EXAM_END_TIME   = new Date("2050-09-15T20:00:00");
 
         const MAX_ATTEMPTS_PER_DAY = 2;
@@ -648,8 +649,18 @@
             });
         }
 
+        // Live automatic clock check loop
+        function startLiveClockCheck() {
+            setInterval(() => {
+                if (!examStarted && !isSubmitted) {
+                    checkExamTiming();
+                }
+            }, 1000);
+        }
+
         window.addEventListener("DOMContentLoaded", () => {
             checkExamTiming();
+            startLiveClockCheck();
         });
 
         function togglePalette() {
@@ -679,7 +690,10 @@
             if (now < EXAM_START_TIME) {
                 if (btnStart) {
                     btnStart.disabled = true;
-                    btnStart.innerText = "Exam Not Started Yet";
+                    let diffSec = Math.floor((EXAM_START_TIME - now) / 1000);
+                    let m = Math.floor(diffSec / 60);
+                    let s = diffSec % 60;
+                    btnStart.innerText = `Exam Starts In: ${m}m ${s < 10 ? "0" : ""}${s}s`;
                     btnStart.style.background = "#94a3b8";
                 }
                 return false;
