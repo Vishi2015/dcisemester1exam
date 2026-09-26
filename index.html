@@ -6,13 +6,29 @@
     <title>100 Marks Computer Online Exam Portal</title>
 
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        body { background: #0f172a; min-height: 100vh; user-select: none; } 
-        
-        /* PASSWORD SCREEN STYLES */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: #0f172a;
+            min-height: 100vh;
+            user-select: none;
+        }
+
+        /* =========================================================
+           PASSWORD SCREEN STYLES
+        ========================================================= */
+
         #password-lock-screen {
             position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             background: #0f172a;
             display: flex;
             justify-content: center;
@@ -31,26 +47,78 @@
             border: 1px solid #334155;
         }
 
-        .pass-box h3 { color: #ffffff; margin-bottom: 15px; font-size: 20px; }
+        /* ONLY ADDED FOR PASSWORD PAGE LOGO */
+
+        .portal-brand-logo {
+            width: 90px;
+            height: 90px;
+            object-fit: contain;
+            display: block;
+            margin: 0 auto 10px auto;
+            border-radius: 50%;
+            background: #ffffff;
+            padding: 3px;
+        }
+
+        .portal-brand-name {
+            color: #ffffff;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            letter-spacing: 0.5px;
+        }
+
+        .pass-box h3 {
+            color: #ffffff;
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+
         .pass-box input {
-            width: 100%; padding: 12px; margin-bottom: 15px;
-            border-radius: 6px; border: 1px solid #475569;
-            background: #0f172a; color: white; text-align: center; font-size: 16px;
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border-radius: 6px;
+            border: 1px solid #475569;
+            background: #0f172a;
+            color: white;
+            text-align: center;
+            font-size: 16px;
         }
+
         .pass-box button {
-            width: 100%; padding: 12px; background: #2563eb;
-            color: white; border: none; border-radius: 6px;
-            font-weight: bold; font-size: 16px; cursor: pointer;
+            width: 100%;
+            padding: 12px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-weight: bold;
+            font-size: 16px;
+            cursor: pointer;
         }
-        .pass-box button:hover { background: #1d4ed8; }
-        #pass-error { color: #ef4444; font-size: 14px; margin-top: 10px; display: none; }
+
+        .pass-box button:hover {
+            background: #1d4ed8;
+        }
+
+        #pass-error {
+            color: #ef4444;
+            font-size: 14px;
+            margin-top: 10px;
+            display: none;
+        }
 
         /* Initial Fullscreen Welcome Overlay */
+
         .welcome-overlay {
             position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             background: rgba(15, 23, 42, 0.95);
-            display: none; /* Controlled by Password Verification */
+            display: none;
             justify-content: center;
             align-items: center;
             z-index: 10000;
@@ -96,9 +164,12 @@
             box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
         }
 
-        .btn-signup:hover { background: #1d4ed8; }
+        .btn-signup:hover {
+            background: #1d4ed8;
+        }
 
         /* Registration Screen */
+
         .registration-wrapper {
             display: flex;
             justify-content: center;
@@ -123,7 +194,10 @@
         .brand-card::before {
             content: "";
             position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
             background-image: url("https://lh3.googleusercontent.com/d/1KA_SgVy5_aSFuBg_Y09uLGdS46_14MXX");
             background-repeat: no-repeat;
             background-position: center 60%;
@@ -133,7 +207,10 @@
             z-index: 1;
         }
 
-        .brand-card > * { position: relative; z-index: 2; }
+        .brand-card > * {
+            position: relative;
+            z-index: 2;
+        }
 
         .coaching-logo {
             width: 110px;
@@ -144,72 +221,174 @@
             border-radius: 50%;
         }
 
-        .coaching-title { font-size: 22px; color: #1e293b; margin-bottom: 5px; font-weight: bold; }
-        .coaching-subtitle { font-size: 13px; color: #64748b; margin-bottom: 20px; border-bottom: 1px solid #cbd5e1; padding-bottom: 10px; }
-
-        .form-group { margin-bottom: 14px; text-align: left; }
-        .form-group label { display: block; margin-bottom: 5px; font-weight: bold; font-size: 13px; color: #1e293b; }
-        
-        .form-group input, .form-group select { 
-            width: 100%; padding: 10px; border: 1px solid #94a3b8; 
-            border-radius: 6px; font-size: 14px; outline: none; 
-            background: transparent; position: relative; z-index: 2;
+        .coaching-title {
+            font-size: 22px;
+            color: #1e293b;
+            margin-bottom: 5px;
+            font-weight: bold;
         }
 
-        .form-group input:focus, .form-group select:focus { border-color: #2563eb; background: rgba(255, 255, 255, 0.85); }
+        .coaching-subtitle {
+            font-size: 13px;
+            color: #64748b;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #cbd5e1;
+            padding-bottom: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 14px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            font-size: 13px;
+            color: #1e293b;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #94a3b8;
+            border-radius: 6px;
+            font-size: 14px;
+            outline: none;
+            background: transparent;
+            position: relative;
+            z-index: 2;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            border-color: #2563eb;
+            background: rgba(255, 255, 255, 0.85);
+        }
 
         .btn-start {
-            width: 100%; padding: 12px; background: #2563eb; color: white;
-            border: none; border-radius: 6px; font-weight: bold; font-size: 16px;
-            cursor: pointer; margin-top: 10px; transition: 0.2s; position: relative; z-index: 2;
+            width: 100%;
+            padding: 12px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-weight: bold;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: 0.2s;
+            position: relative;
+            z-index: 2;
         }
-        .btn-start:hover { background: #1d4ed8; }
-        .btn-start:disabled { background: #94a3b8; cursor: not-allowed; }
+
+        .btn-start:hover {
+            background: #1d4ed8;
+        }
+
+        .btn-start:disabled {
+            background: #94a3b8;
+            cursor: not-allowed;
+        }
 
         /* Main Exam Interface */
-        #exam-interface { display: none; flex-direction: column; height: 100vh; background: #f4f6f9; }
 
-        header { background: #1e293b; color: white; padding: 10px 20px; display: flex; justify-content: space-between; align-items: center; }
-        .header-brand { display: flex; align-items: center; gap: 12px; }
-        .header-logo { height: 55px; width: 55px; object-fit: contain; border-radius: 50%; background: #fff; padding: 2px; }
-        .header-title-container { display: flex; flex-direction: column; }
-        .header-main-title { font-size: 18px; font-weight: bold; color: #ffffff; line-height: 1.2; }
-        .header-sub-title { font-size: 12px; color: #94a3b8; }
+        #exam-interface {
+            display: none;
+            flex-direction: column;
+            height: 100vh;
+            background: #f4f6f9;
+        }
 
-        .timer { background: #ef4444; padding: 6px 12px; border-radius: 4px; font-weight: bold; font-size: 16px; margin-left: auto; }
+        header {
+            background: #1e293b;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-        .container { display: flex; flex: 1; overflow: hidden; position: relative; }
-        
-        .question-section { 
-            flex: 1; 
-            padding: 20px; 
-            display: flex; 
-            flex-direction: column; 
-            justify-content: space-between; 
-            margin: 10px; 
-            border-radius: 8px; 
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
+        .header-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .header-logo {
+            height: 55px;
+            width: 55px;
+            object-fit: contain;
+            border-radius: 50%;
+            background: #fff;
+            padding: 2px;
+        }
+
+        .header-title-container {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header-main-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #ffffff;
+            line-height: 1.2;
+        }
+
+        .header-sub-title {
+            font-size: 12px;
+            color: #94a3b8;
+        }
+
+        .timer {
+            background: #ef4444;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 16px;
+            margin-left: auto;
+        }
+
+        .container {
+            display: flex;
+            flex: 1;
+            overflow: hidden;
             position: relative;
-            background-color: #ffffff; 
-            overflow: hidden; 
+        }
+
+        .question-section {
+            flex: 1;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            margin: 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: relative;
+            background-color: #ffffff;
+            overflow: hidden;
             transition: all 0.3s ease;
         }
 
         .question-section::after {
             content: "";
             position: absolute;
-            top: 50%; 
+            top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 50%; 
+            width: 50%;
             height: 70%;
             background-image: url("https://lh3.googleusercontent.com/d/1KA_SgVy5_aSFuBg_Y09uLGdS46_14MXX");
             background-repeat: no-repeat;
             background-position: center;
             background-size: contain;
-            opacity: 0.15; 
-            pointer-events: none; 
-            z-index: 1; 
+            opacity: 0.15;
+            pointer-events: none;
+            z-index: 1;
         }
 
         .q-toolbar {
@@ -242,23 +421,79 @@
             border-color: #2563eb;
         }
 
-        .question-content-box { position: relative; z-index: 2; flex: 1; overflow-y: auto; }
-        .q-header { font-size: 18px; font-weight: bold; margin-bottom: 15px; border-bottom: 2px solid #cbd5e1; padding-bottom: 10px; color: #0f172a; transition: font-size 0.2s ease; }
-        
-        .option-label { 
-            display: flex; align-items: center; gap: 10px; padding: 12px 15px; 
-            margin: 10px 0; background: transparent; border: 1px solid rgba(203, 213, 225, 0.4); 
-            border-radius: 6px; cursor: pointer; font-weight: 500; transition: background 0.2s, font-size 0.2s ease;
+        .question-content-box {
+            position: relative;
+            z-index: 2;
+            flex: 1;
+            overflow-y: auto;
+        }
+
+        .q-header {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #cbd5e1;
+            padding-bottom: 10px;
+            color: #0f172a;
+            transition: font-size 0.2s ease;
+        }
+
+        .option-label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 15px;
+            margin: 10px 0;
+            background: transparent;
+            border: 1px solid rgba(203, 213, 225, 0.4);
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background 0.2s, font-size 0.2s ease;
             font-size: 15px;
         }
-        .option-label:hover { background: rgba(37, 99, 235, 0.05); border-color: #2563eb; }
 
-        .buttons { display: flex; justify-content: space-between; margin-top: 20px; position: relative; z-index: 11; }
-        .btn { padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
-        .btn-next { background: #2563eb; color: white; }
-        .btn-prev { background: #64748b; color: white; }
-        .btn-clear { background: #f59e0b; color: white; }
-        .btn-submit { background: #16a34a; color: white; width: 100%; }
+        .option-label:hover {
+            background: rgba(37, 99, 235, 0.05);
+            border-color: #2563eb;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            position: relative;
+            z-index: 11;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .btn-next {
+            background: #2563eb;
+            color: white;
+        }
+
+        .btn-prev {
+            background: #64748b;
+            color: white;
+        }
+
+        .btn-clear {
+            background: #f59e0b;
+            color: white;
+        }
+
+        .btn-submit {
+            background: #16a34a;
+            color: white;
+            width: 100%;
+        }
 
         .palette-wrapper {
             position: relative;
@@ -303,60 +538,164 @@
             transition: background 0.2s;
         }
 
-        .palette-toggle-btn:hover { background: #2563eb; }
+        .palette-toggle-btn:hover {
+            background: #2563eb;
+        }
 
-        .palette-section { 
-            width: 300px; 
+        .palette-section {
+            width: 300px;
             height: calc(100vh - 95px);
-            background: white; 
-            margin: 10px 10px 10px 0; 
-            padding: 15px; 
-            border-radius: 8px; 
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
-            display: flex; 
-            flex-direction: column; 
+            background: white;
+            margin: 10px 10px 10px 0;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
             transition: transform 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
         }
 
-        .stats-box { background: #f1f5f9; padding: 10px; border-radius: 6px; margin-bottom: 10px; font-size: 13px; line-height: 1.5; }
+        .stats-box {
+            background: #f1f5f9;
+            padding: 10px;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            font-size: 13px;
+            line-height: 1.5;
+        }
 
-        .palette-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-top: 10px; overflow-y: auto; max-height: calc(100vh - 280px); padding-right: 5px; }
-        .q-btn { padding: 8px; border: 1px solid #ccc; background: #e2e8f0; font-weight: bold; border-radius: 4px; cursor: pointer; font-size: 12px; }
-        .q-btn.answered { background: #22c55e; color: white; }
-        .q-btn.unanswered { background: #ef4444; color: white; }
-        .q-btn.active { border: 2px solid #000; }
+        .palette-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 8px;
+            margin-top: 10px;
+            overflow-y: auto;
+            max-height: calc(100vh - 280px);
+            padding-right: 5px;
+        }
+
+        .q-btn {
+            padding: 8px;
+            border: 1px solid #ccc;
+            background: #e2e8f0;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        .q-btn.answered {
+            background: #22c55e;
+            color: white;
+        }
+
+        .q-btn.unanswered {
+            background: #ef4444;
+            color: white;
+        }
+
+        .q-btn.active {
+            border: 2px solid #000;
+        }
 
         .modal-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.75); display: none;
-            justify-content: center; align-items: center; z-index: 9999;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.75);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
         }
+
         .modal-box {
-            background: white; padding: 25px; border-radius: 10px;
-            text-align: center; max-width: 400px; width: 90%;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
             box-shadow: 0 5px 15px rgba(0,0,0,0.3);
         }
-        .modal-box h3 { color: #dc2626; margin-bottom: 10px; }
-        .modal-box p { color: #334155; font-size: 14px; margin-bottom: 15px; line-height: 1.4; }
-        .timer-warning { font-size: 15px; font-weight: bold; color: #ef4444; margin-bottom: 15px; }
-        .modal-btn {
-            background: #2563eb; color: white; border: none;
-            padding: 10px 20px; border-radius: 5px; font-weight: bold;
-            cursor: pointer; font-size: 15px;
+
+        .modal-box h3 {
+            color: #dc2626;
+            margin-bottom: 10px;
         }
-        .modal-btn:hover { background: #1d4ed8; }
+
+        .modal-box p {
+            color: #334155;
+            font-size: 14px;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+
+        .timer-warning {
+            font-size: 15px;
+            font-weight: bold;
+            color: #ef4444;
+            margin-bottom: 15px;
+        }
+
+        .modal-btn {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        .modal-btn:hover {
+            background: #1d4ed8;
+        }
     </style>
 </head>
+
 <body>
 
     <!-- PASSWORD LOCK OVERLAY (STRICT) -->
     <div id="password-lock-screen">
+
         <div class="pass-box">
+
+            <!-- COACHING LOGO ADDED HERE -->
+            <img
+                src="https://lh3.googleusercontent.com/d/1KA_SgVy5_aSFuBg_Y09uLGdS46_14MXX"
+                alt="Coaching Logo"
+                class="portal-brand-logo"
+                onerror="this.style.display='none'"
+            >
+
+            <!-- COACHING NAME ADDED HERE -->
+            <div class="portal-brand-name">
+                DRASHTI COMPUTER INSTITUTE
+            </div>
+
             <h3>🔒 EXAM PORTAL LOCK</h3>
-            <input type="password" id="examPasswordInput" placeholder="Enter Access Password" onkeypress="if(event.key==='Enter') verifyPortalPassword()">
-            <button onclick="verifyPortalPassword()">UNLOCK PORTAL</button>
-            <div id="pass-error">⛔ Galat Password! Access Denied.</div>
+
+            <input
+                type="password"
+                id="examPasswordInput"
+                placeholder="Enter Access Password"
+                onkeypress="if(event.key==='Enter') verifyPortalPassword()"
+            >
+
+            <button onclick="verifyPortalPassword()">
+                UNLOCK PORTAL
+            </button>
+
+            <div id="pass-error">
+                ⛔ Galat Password! Access Denied.
+            </div>
+
         </div>
+
     </div>
 
     <!-- WELCOME OVERLAY -->
@@ -372,33 +711,78 @@
     <div class="modal-overlay" id="warningModal">
         <div class="modal-box">
             <h3 id="modalTitle">⚠️ FULLSCREEN WARNING</h3>
-            <p id="modalMsg">आप फुल स्क्रीन मोड से बाहर आ चुके हैं। समय समाप्त होने से पहले फुल स्क्रीन में वापस आएं।</p>
-            <div class="timer-warning">Re-enter full screen in: <span id="fullscreenCountdown">90</span>s</div>
-            <button class="modal-btn" id="modalBtn" onclick="reEnterFullscreen()">OK & Re-enter Fullscreen</button>
+            <p id="modalMsg">
+                आप फुल स्क्रीन मोड से बाहर आ चुके हैं। समय समाप्त होने से पहले फुल स्क्रीन में वापस आएं।
+            </p>
+
+            <div class="timer-warning">
+                Re-enter full screen in:
+                <span id="fullscreenCountdown">90</span>s
+            </div>
+
+            <button class="modal-btn" id="modalBtn" onclick="reEnterFullscreen()">
+                OK & Re-enter Fullscreen
+            </button>
         </div>
     </div>
 
     <!-- REGISTRATION SCREEN -->
     <div class="registration-wrapper" id="registrationScreen">
+
         <div class="brand-card">
-            <img src="https://lh3.googleusercontent.com/d/1KA_SgVy5_aSFuBg_Y09uLGdS46_14MXX" alt="Coaching Logo" class="coaching-logo" onerror="this.style.display='none'">
-            <h2 class="coaching-title">DRASHTI COMPUTER INSTITUTE</h2>
-            <p class="coaching-subtitle">SEMESTER 1 EXAMINATION</p>
+
+            <img
+                src="https://lh3.googleusercontent.com/d/1KA_SgVy5_aSFuBg_Y09uLGdS46_14MXX"
+                alt="Coaching Logo"
+                class="coaching-logo"
+                onerror="this.style.display='none'"
+            >
+
+            <h2 class="coaching-title">
+                DRASHTI COMPUTER INSTITUTE
+            </h2>
+
+            <p class="coaching-subtitle">
+                SEMESTER 1 EXAMINATION
+            </p>
 
             <div class="form-group">
                 <label>Candidate Name</label>
-                <input type="text" id="candidateName" placeholder="Enter Full Name" style="text-transform: uppercase;" oninput="this.value = this.value.toUpperCase()">
+                <input
+                    type="text"
+                    id="candidateName"
+                    placeholder="Enter Full Name"
+                    style="text-transform: uppercase;"
+                    oninput="this.value = this.value.toUpperCase()"
+                >
             </div>
+
             <div class="form-group">
                 <label>Father's Name</label>
-                <input type="text" id="fatherName" placeholder="Enter Father's Name" style="text-transform: uppercase;" oninput="this.value = this.value.toUpperCase()">
+                <input
+                    type="text"
+                    id="fatherName"
+                    placeholder="Enter Father's Name"
+                    style="text-transform: uppercase;"
+                    oninput="this.value = this.value.toUpperCase()"
+                >
             </div>
+
             <div class="form-group">
                 <label>Mobile Number</label>
-                <input type="text" id="mobileNo" placeholder="10-digit Mobile Number" maxlength="10" inputmode="numeric" oninput="validateMobile(this)">
+                <input
+                    type="text"
+                    id="mobileNo"
+                    placeholder="10-digit Mobile Number"
+                    maxlength="10"
+                    inputmode="numeric"
+                    oninput="validateMobile(this)"
+                >
             </div>
+
             <div class="form-group">
                 <label>Batch Timing</label>
+
                 <select id="batchTiming">
                     <option value="">Select Batch</option>
                     <option value="08:00 AM - 09:00 AM">08:00 AM - 09:00 AM</option>
@@ -413,595 +797,1485 @@
                     <option value="07:00 PM - 08:00 PM">07:00 PM - 08:00 PM</option>
                 </select>
             </div>
-            <button class="btn-start" onclick="startExam()">Start Test</button>
+
+            <button class="btn-start" onclick="startExam()">
+                Start Test
+            </button>
+
         </div>
     </div>
 
     <!-- EXAM INTERFACE -->
     <div id="exam-interface">
+
         <header>
+
             <div class="header-brand">
-                <img src="https://lh3.googleusercontent.com/d/1KA_SgVy5_aSFuBg_Y09uLGdS46_14MXX" alt="Logo" class="header-logo" onerror="this.style.display='none'">
+
+                <img
+                    src="https://lh3.googleusercontent.com/d/1KA_SgVy5_aSFuBg_Y09uLGdS46_14MXX"
+                    alt="Logo"
+                    class="header-logo"
+                    onerror="this.style.display='none'"
+                >
+
                 <div class="header-title-container">
-                    <div class="header-main-title">DRASHTI COMPUTER INSTITUTE</div>
-                    <div class="header-sub-title">Semester 1 Online Exam (100 Questions)</div>
+                    <div class="header-main-title">
+                        DRASHTI COMPUTER INSTITUTE
+                    </div>
+
+                    <div class="header-sub-title">
+                        Semester 1 Online Exam (100 Questions)
+                    </div>
                 </div>
+
             </div>
-            <div class="timer" id="timer">Time Left: 40:00</div>
+
+            <div class="timer" id="timer">
+                Time Left: 40:00
+            </div>
+
         </header>
 
         <div class="container">
+
             <div class="question-section" id="questionSection">
+
                 <div class="q-toolbar">
-                    <span style="font-size: 12px; color: #64748b; font-weight: bold; margin-right: 4px;">Font Size:</span>
-                    <button class="font-control-btn" onclick="changeFontSize(-2)" title="Decrease Font Size">-A</button>
-                    <button class="font-control-btn" onclick="resetFontSize()" title="Reset Font Size">A</button>
-                    <button class="font-control-btn" onclick="changeFontSize(2)" title="Increase Font Size">+A</button>
+
+                    <span style="font-size: 12px; color: #64748b; font-weight: bold; margin-right: 4px;">
+                        Font Size:
+                    </span>
+
+                    <button
+                        class="font-control-btn"
+                        onclick="changeFontSize(-2)"
+                        title="Decrease Font Size"
+                    >
+                        -A
+                    </button>
+
+                    <button
+                        class="font-control-btn"
+                        onclick="resetFontSize()"
+                        title="Reset Font Size"
+                    >
+                        A
+                    </button>
+
+                    <button
+                        class="font-control-btn"
+                        onclick="changeFontSize(2)"
+                        title="Increase Font Size"
+                    >
+                        +A
+                    </button>
+
                 </div>
 
                 <div class="question-content-box">
-                    <div class="q-header" id="question-text">Question loading...</div>
+
+                    <div class="q-header" id="question-text">
+                        Question loading...
+                    </div>
+
                     <div class="options" id="options-container"></div>
+
                 </div>
+
                 <div class="buttons">
-                    <button class="btn btn-prev" onclick="prevQuestion()">Previous</button>
-                    <button class="btn btn-clear" onclick="clearResponse()">Clear Response</button>
-                    <button class="btn btn-next" onclick="nextQuestion()">Save & Next</button>
+
+                    <button class="btn btn-prev" onclick="prevQuestion()">
+                        Previous
+                    </button>
+
+                    <button class="btn btn-clear" onclick="clearResponse()">
+                        Clear Response
+                    </button>
+
+                    <button class="btn btn-next" onclick="nextQuestion()">
+                        Save & Next
+                    </button>
+
                 </div>
+
             </div>
 
             <div class="palette-wrapper" id="paletteWrapper">
-                <button class="palette-toggle-btn" id="togglePaletteBtn" onclick="togglePalette()" title="Hide/Show Question Palette">▶</button>
+
+                <button
+                    class="palette-toggle-btn"
+                    id="togglePaletteBtn"
+                    onclick="togglePalette()"
+                    title="Hide/Show Question Palette"
+                >
+                    ▶
+                </button>
+
                 <div class="palette-section">
+
                     <div class="stats-box">
-                        <div><b>Candidate:</b> <span id="disp-name">-</span></div>
-                        <div><b>Batch:</b> <span id="disp-batch">-</span></div>
-                        <div><b>Attempted:</b> <span id="attempted-q">0</span> / <span id="total-q">100</span></div>
-                        <div><b>FS Exit Count:</b> <span id="exit-count-disp" style="color:red; font-weight:bold;">0</span></div>
+
+                        <div>
+                            <b>Candidate:</b>
+                            <span id="disp-name">-</span>
+                        </div>
+
+                        <div>
+                            <b>Batch:</b>
+                            <span id="disp-batch">-</span>
+                        </div>
+
+                        <div>
+                            <b>Attempted:</b>
+                            <span id="attempted-q">0</span> /
+                            <span id="total-q">100</span>
+                        </div>
+
+                        <div>
+                            <b>FS Exit Count:</b>
+                            <span
+                                id="exit-count-disp"
+                                style="color:red; font-weight:bold;"
+                            >
+                                0
+                            </span>
+                        </div>
+
                     </div>
 
-                    <h3 style="font-size: 15px;">Question Palette</h3>
+                    <h3 style="font-size: 15px;">
+                        Question Palette
+                    </h3>
+
                     <div class="palette-grid" id="palette"></div>
+
                     <div style="margin-top: auto; padding-top: 15px;">
-                        <button class="btn btn-submit" id="submitBtn" onclick="submitExam(false)">Submit Test</button>
+
+                        <button
+                            class="btn btn-submit"
+                            id="submitBtn"
+                            onclick="submitExam(false)"
+                        >
+                            Submit Test
+                        </button>
+
                     </div>
+
                 </div>
+
             </div>
+
         </div>
     </div>
 
     <script>
+
+        // =========================================================
         // PASSWORD VERIFICATION SYSTEM
-        const PORTAL_PASSWORD = "DCI2026"; // Change password here if required
+        // =========================================================
+
+        const PORTAL_PASSWORD = "DCI2026";
 
         function verifyPortalPassword() {
-            const inputPass = document.getElementById("examPasswordInput").value;
-            const errDiv = document.getElementById("pass-error");
-            
+
+            const inputPass =
+                document.getElementById("examPasswordInput").value;
+
+            const errDiv =
+                document.getElementById("pass-error");
+
             if (inputPass === PORTAL_PASSWORD) {
-                document.getElementById("password-lock-screen").style.display = "none";
-                document.getElementById("welcomeOverlay").style.display = "flex";
-                openFullScreen(); // Auto Fullscreen on Password Submit
+
+                document.getElementById(
+                    "password-lock-screen"
+                ).style.display = "none";
+
+                document.getElementById(
+                    "welcomeOverlay"
+                ).style.display = "flex";
+
+                openFullScreen();
+
             } else {
+
                 errDiv.style.display = "block";
-                document.getElementById("examPasswordInput").value = "";
+
+                document.getElementById(
+                    "examPasswordInput"
+                ).value = "";
+
             }
         }
 
-        const SCRIPT_URL_1 = "https://script.google.com/macros/s/AKfycbx4S8nGmL-pACBtNUH3JXjzT2m-qcPzy2yBY6Tsj2oDM6MsgVTxbEohuybp16_7YcdIzQ/exec";
+
+        // =========================================================
+        // GOOGLE APPS SCRIPT
+        // =========================================================
+
+        const SCRIPT_URL_1 =
+            "https://script.google.com/macros/s/AKfycbx4S8nGmL-pACBtNUH3JXjzT2m-qcPzy2yBY6Tsj2oDM6MsgVTxbEohuybp16_7YcdIzQ/exec";
+
         const SCRIPT_URL_2 = "";
+
         const SCRIPT_URL_3 = "";
 
-        const EXAM_START_TIME = new Date("2026-09-24T09:54:00");
-        const EXAM_END_TIME   = new Date("2050-09-15T20:00:00");
+
+        // =========================================================
+        // EXAM SETTINGS
+        // =========================================================
+
+        const EXAM_START_TIME =
+            new Date("2026-09-10T20:40:30");
+
+        const EXAM_END_TIME =
+            new Date("2050-09-15T20:00:00");
 
         const MAX_ATTEMPTS_PER_DAY = 2;
+
         const PASS_MARKS = 50;
+
         const MARKS_PER_QUESTION = 1;
 
+
+        // =========================================================
+        // QUESTIONS
+        // =========================================================
+
         const rawQuestions = [
+
             { id: 1, q: "Notepad me Help ke liye konsi function key use hoti hai?", options: ["F1", "F2", "F5", "F7"], ans: 0 },
+
             { id: 2, q: "Notepad me Time aur Date insert karne ki key kya hai?", options: ["F2", "F5", "F7", "F12"], ans: 1 },
+
             { id: 3, q: "Notepad me Replace options ki shortcut key kya hai?", options: ["Ctrl + R", "Ctrl + H", "Ctrl + F", "Ctrl + G"], ans: 1 },
+
             { id: 4, q: "Notepad file ka default extension kya hota hai?", options: [".txt", ".docx", ".rtf", ".pdf"], ans: 0 },
+
             { id: 5, q: "Computer ki physical device ko kya kaha jata hai?", options: ["Software", "Hardware", "Operating System", "Data"], ans: 1 },
+
             { id: 6, q: "CPU ka poora naam kya hai?", options: ["Central Processing Unit", "Central Program Unit", "Control Panel Unit", "Computer Processing Unit"], ans: 0 },
+
             { id: 7, q: "Computer ka brain kise kaha jata hai?", options: ["RAM", "Hard Disk", "CPU", "Monitor"], ans: 2 },
+
             { id: 8, q: "Temporary memory kise kaha jata hai?", options: ["RAM", "ROM", "Hard Disk", "CD"], ans: 0 },
+
             { id: 9, q: "Permanent memory ka udaharan kaun sa hai?", options: ["RAM", "ROM", "Cache", "Register"], ans: 1 },
+
             { id: 10, q: "Cut karne ki shortcut key kya hai?", options: ["Ctrl + C", "Ctrl + X", "Ctrl + V", "Ctrl + Z"], ans: 1 },
+
             { id: 11, q: "MS Word file ka default extension kya hota hai?", options: [".docx", ".xlsx", ".pptx", ".txt"], ans: 0 },
+
             { id: 12, q: "MS Word me Spelling/Grammar mistake ko kaise darshaya jata hai?", options: ["Red wavy line", "Blue line", "Green line", "Yellow line"], ans: 0 },
+
             { id: 13, q: "Mail Merge feature kis tab me milta hai?", options: ["Home tab", "Insert tab", "Mailing tab", "View tab"], ans: 2 },
+
             { id: 14, q: "Text ko Bold karne ki shortcut key kya hai?", options: ["Ctrl + B", "Ctrl + I", "Ctrl + U", "Ctrl + Shift + B"], ans: 0 },
+
             { id: 15, q: "Action ko Undo karne ki shortcut key kya hai?", options: ["Ctrl + Y", "Ctrl + Z", "Ctrl + X", "Ctrl + U"], ans: 1 },
+
             { id: 16, q: "Document me Text ko Find karne ki key kya hai?", options: ["Ctrl + F", "Ctrl + H", "Ctrl + R", "Ctrl + G"], ans: 0 },
+
             { id: 17, q: "Selected Text ko Center Align karne ki key kya hai?", options: ["Ctrl + C", "Ctrl + E", "Ctrl + R", "Ctrl + J"], ans: 1 },
-            { id: 18, q: "Page Margins aur Orientation kis Tab me होते हैं?", options: ["Home Tab", "Insert Tab", "Layout Tab", "Design Tab"], ans: 2 },
+
+            { id: 18, q: "Page Margins aur Orientation kis Tab me hote hain?", options: ["Home Tab", "Insert Tab", "Layout Tab", "Design Tab"], ans: 2 },
+
             { id: 19, q: "Page Break insert karne ki shortcut key kya hai?", options: ["Ctrl + Enter", "Shift + Enter", "Alt + Enter", "Tab + Enter"], ans: 0 },
+
             { id: 20, q: "Text me Font Size bada karne ki key kya hai?", options: ["Ctrl + Shift + >", "Ctrl + Shift + <", "Ctrl + >", "Ctrl + +"], ans: 0 },
+
             { id: 21, q: "Spelling & Grammar check karne ki Function key kaun si hai?", options: ["F2", "F5", "F7", "F12"], ans: 2 },
+
             { id: 22, q: "Nayi Document File kholne ki key kya hai?", options: ["Ctrl + N", "Ctrl + O", "Ctrl + S", "Ctrl + M"], ans: 0 },
+
             { id: 23, q: "Text ko Superscript karne ki key kya hai?", options: ["Ctrl + =", "Ctrl + Shift + +", "Alt + +", "Ctrl + Alt + +"], ans: 1 },
+
             { id: 24, q: "Text ko Subscript karne ki key kya hai?", options: ["Ctrl + =", "Ctrl + Shift + +", "Alt + =", "Ctrl + Shift + -"], ans: 0 },
+
             { id: 25, q: "Save As karne ki function key kya hai?", options: ["F1", "F8", "F12", "F5"], ans: 2 },
+
             { id: 26, q: "Format Painter copy karne ki shortcut key kya hai?", options: ["Ctrl + Shift + C", "Ctrl + C", "Ctrl + Alt + C", "Shift + C"], ans: 0 },
+
             { id: 27, q: "Hyperlink insert karne ki shortcut key kya hai?", options: ["Ctrl + H", "Ctrl + K", "Ctrl + L", "Ctrl + M"], ans: 1 },
+
             { id: 28, q: "Watermark option kis tab me hota hai?", options: ["Home", "Insert", "Design / Page Layout", "View"], ans: 2 },
+
             { id: 29, q: "MS Word me Maximum Zoom limit kitni hoti hai?", options: ["100%", "200%", "400%", "500%"], ans: 3 },
+
             { id: 30, q: "Default Font Name MS Word me kya hota hai?", options: ["Calibri", "Arial", "Times New Roman", "Verdana"], ans: 0 },
+
             { id: 31, q: "Text ko Justify karne ki shortcut key kya hai?", options: ["Ctrl + J", "Ctrl + E", "Ctrl + L", "Ctrl + R"], ans: 0 },
+
             { id: 32, q: "Line spacing badhane ki shortcut key (1.5 line) kya hai?", options: ["Ctrl + 1", "Ctrl + 2", "Ctrl + 5", "Ctrl + L"], ans: 2 },
+
             { id: 33, q: "Full Screen Mode activate karne ki key kya hai?", options: ["F11", "F10", "Esc", "F5"], ans: 0 },
+
             { id: 34, q: "Redo karne ki shortcut key kya hai?", options: ["Ctrl + Y", "Ctrl + Z", "Ctrl + R", "Ctrl + Shift + Z"], ans: 0 },
+
             { id: 35, q: "Selected text ko Italic karne ki key kya hai?", options: ["Ctrl + I", "Ctrl + B", "Ctrl + U", "Ctrl + Alt + I"], ans: 0 },
+
             { id: 36, q: "Selected text ko Underline karne ki key kya hai?", options: ["Ctrl + U", "Ctrl + B", "Ctrl + I", "Ctrl + D"], ans: 0 },
+
             { id: 37, q: "Document Print karne ki shortcut key kya hai?", options: ["Ctrl + P", "Ctrl + Shift + P", "Alt + P", "Ctrl + F2"], ans: 0 },
+
             { id: 38, q: "Document me Sabhi Text ko Select karne ki key kya hai?", options: ["Ctrl + A", "Ctrl + S", "Ctrl + Shift + A", "Alt + A"], ans: 0 },
+
             { id: 39, q: "Header aur Footer insert karne ki tab konsi hai?", options: ["Home", "Insert", "Page Layout", "View"], ans: 1 },
+
             { id: 40, q: "Drop Cap option kis tab me milta hai?", options: ["Insert", "Home", "Layout", "Review"], ans: 0 },
+
             { id: 41, q: "MS Excel file ka default extension kya hota hai?", options: [".docx", ".xlsx", ".pptx", ".csv"], ans: 1 },
+
             { id: 42, q: "Numbers ko AutoSum karne ki shortcut key kya hai?", options: ["Alt + =", "Ctrl + =", "Shift + =", "Alt + Shift + ="], ans: 0 },
+
             { id: 43, q: "Active Cell ka Address kahan dikhai deta hai?", options: ["Formula Bar", "Name Box", "Status Bar", "Title Bar"], ans: 1 },
+
             { id: 44, q: "Nayi Worksheet insert karne ki shortcut key kya hai?", options: ["Shift + F11", "Ctrl + F11", "Alt + F11", "F11"], ans: 0 },
+
             { id: 45, q: "MS Excel me pehli Cell ka Address kya hota hai?", options: ["A1", "1A", "Cell1", "0A"], ans: 0 },
+
             { id: 46, q: "MAX() Function ka upyog kisliye kiya jata hai?", options: ["Smallest Value", "Largest Value", "Average", "Total"], ans: 1 },
+
             { id: 47, q: "Cell Edit karne ki Function key kaun si hai?", options: ["F1", "F2", "F5", "F7"], ans: 1 },
+
             { id: 48, q: "Formula bar activate ya formula start kis symbol se hota hai?", options: ["+", "=", "-", "@"], ans: 1 },
+
             { id: 49, q: "Minimum values nikalne ka formula konsa hai?", options: ["MIN()", "SMALL()", "LOW()", "LESS()"], ans: 0 },
+
             { id: 50, q: "Average nikalne ke liye konsa formula use hota hai?", options: ["AVG()", "AVERAGE()", "TOTAL()", "SUMAVG()"], ans: 1 },
+
             { id: 51, q: "Excel me Row aur Column ke intersection ko kya kehte hain?", options: ["Square", "Cell", "Box", "Block"], ans: 1 },
+
             { id: 52, q: "Poori Column select karne ki shortcut key kya hai?", options: ["Ctrl + Space", "Shift + Space", "Ctrl + A", "Alt + Space"], ans: 0 },
+
             { id: 53, q: "Poori Row select karne ki shortcut key kya hai?", options: ["Ctrl + Space", "Shift + Space", "Ctrl + Shift + Space", "Alt + Row"], ans: 1 },
+
             { id: 54, q: "New Workbook open karne ki shortcut key kya hai?", options: ["Ctrl + N", "Ctrl + O", "Ctrl + W", "Ctrl + Shift + N"], ans: 0 },
+
             { id: 55, q: "Current Date insert karne ki shortcut key kya hai?", options: ["Ctrl + ;", "Ctrl + Shift + ;", "Alt + Shift + D", "Ctrl + D"], ans: 0 },
+
             { id: 56, q: "Current Time insert karne ki shortcut key kya hai?", options: ["Ctrl + ;", "Ctrl + Shift + ;", "Alt + Shift + T", "Ctrl + T"], ans: 1 },
+
             { id: 57, q: "Cell me Text ko Wrap karne ka option kis tab me hota hai?", options: ["Home", "Insert", "Data", "View"], ans: 0 },
+
             { id: 58, q: "Multi-Cells ko ek cell banane ke liye kya use karte hain?", options: ["Merge & Center", "Combine", "Join", "Group"], ans: 0 },
+
             { id: 59, q: "Excel me Maximum Zoom limit kitni hoti hai?", options: ["100%", "200%", "400%", "500%"], ans: 2 },
+
             { id: 60, q: "Chart insert karne ki shortcut key kaun si hai?", options: ["F11", "F2", "F5", "F7"], ans: 0 },
+
             { id: 61, q: "Filter apply karne ki shortcut key kya hai?", options: ["Ctrl + Shift + L", "Ctrl + F", "Alt + F", "Ctrl + L"], ans: 0 },
+
             { id: 62, q: "Duplicate Value highlight karne ke liye kya use hota hai?", options: ["Conditional Formatting", "Data Validation", "Sort", "Filter"], ans: 0 },
+
             { id: 63, q: "Absolute Reference ke liye konsa symbol use hota hai?", options: ["$", "#", "%", "&"], ans: 0 },
-            { id: 64, q: "Sheet ko Rename karne ke liye kya करते हैं?", options: ["Double Click on Tab", "Ctrl + R", "F2", "Right Click → Edit"], ans: 0 },
+
+            { id: 64, q: "Sheet ko Rename karne ke liye kya karte hain?", options: ["Double Click on Tab", "Ctrl + R", "F2", "Right Click → Edit"], ans: 0 },
+
             { id: 65, q: "Rows ko kis se darshaya jata hai?", options: ["Numbers (1, 2, 3)", "Letters (A, B, C)", "Symbols", "Roman"], ans: 0 },
+
             { id: 66, q: "Columns ko kis se darshaya jata hai?", options: ["Letters (A, B, C)", "Numbers (1, 2, 3)", "Symbols", "Roman"], ans: 0 },
+
             { id: 67, q: "Excel me default kitni sheets hoti hain (New version)?", options: ["1", "3", "5", "10"], ans: 0 },
+
             { id: 68, q: "Numbers Count karne ke liye konsa function use hota hai?", options: ["COUNT()", "COUNTA()", "SUM()", "NUMBER()"], ans: 0 },
+
             { id: 69, q: "Non-blank cells count karne ke liye konsa function use hota hai?", options: ["COUNTA()", "COUNT()", "COUNTBLANK()", "COUNTIF()"], ans: 0 },
+
             { id: 70, q: "Worksheet ko Close karne ki shortcut key kya hai?", options: ["Ctrl + W", "Alt + F4", "Ctrl + F4", "Ctrl + Shift + W"], ans: 0 },
+
             { id: 71, q: "PowerPoint presentation file ka default extension kya hai?", options: [".docx", ".xlsx", ".pptx", ".pdf"], ans: 2 },
+
             { id: 72, q: "Nayi Slide insert karne ki shortcut key kya hai?", options: ["Ctrl + N", "Ctrl + M", "Ctrl + S", "Ctrl + D"], ans: 1 },
+
             { id: 73, q: "Slide Show start karne ki shortcut key kaun si hai?", options: ["F5", "Shift + F5", "F7", "F12"], ans: 0 },
+
             { id: 74, q: "Current Slide se Slide Show start karne ki key kya hai?", options: ["Shift + F5", "F5", "Ctrl + F5", "Alt + F5"], ans: 0 },
+
             { id: 75, q: "Slide duplicate karne ki shortcut key kya hai?", options: ["Ctrl + C", "Ctrl + D", "Ctrl + N", "Ctrl + M"], ans: 1 },
+
             { id: 76, q: "Slide Show se bahar nikalne ke liye konsi key press karte hain?", options: ["Esc", "Enter", "Space", "Tab"], ans: 0 },
+
             { id: 77, q: "Motion Effects apply karne ke liye kya use karte hain?", options: ["Animations", "Transitions", "Design", "Slide Sorter"], ans: 0 },
+
             { id: 78, q: "Ek slide se doosri slide me jaane ke effect ko kya kehte hain?", options: ["Slide Transition", "Custom Animation", "Slide Movement", "Design Effect"], ans: 0 },
+
             { id: 79, q: "Sabhi slides ka thumbnail view dekhne ke liye konsa view hota hai?", options: ["Slide Sorter View", "Normal View", "Reading View", "Master View"], ans: 0 },
+
             { id: 80, q: "Presenter ke dekhne ke liye notes kahan likhe jaate hain?", options: ["Presenter Notes", "Footer", "Header", "Slide Margin"], ans: 0 },
+
             { id: 81, q: "Presentation me Picture insert kis tab se hoti hai?", options: ["Insert", "Home", "Design", "Format"], ans: 0 },
+
             { id: 82, q: "Sabhi Slides par ek jaisa design lagane ke liye kya use hota hai?", options: ["Slide Master", "Design Layout", "Theme Master", "Template"], ans: 0 },
+
             { id: 83, q: "PowerPoint me Zoom limit kitni hoti hai?", options: ["100%", "200%", "400%", "500%"], ans: 2 },
+
             { id: 84, q: "Blank Presentation lene ki shortcut key kya hai?", options: ["Ctrl + N", "Ctrl + M", "Ctrl + B", "Alt + N"], ans: 0 },
+
             { id: 85, q: "Slide layout change karne ka option kis tab me hota hai?", options: ["Home", "Insert", "Design", "Transitions"], ans: 0 },
+
             { id: 86, q: "WWW ka poora naam kya hai?", options: ["World Wide Web", "World Wide Work", "World Web Wide", "World Wide Window"], ans: 0 },
+
             { id: 87, q: "URL ka poora naam kya hai?", options: ["Uniform Resource Locator", "Unique Resource Locator", "Universal Resource Link", "Uniform Real Locator"], ans: 0 },
+
             { id: 88, q: "Website ke pehle page ko kya kaha jata hai?", options: ["Home Page", "First Page", "Main Page", "Index Page"], ans: 0 },
+
             { id: 89, q: "Email ka poora naam kya hai?", options: ["Electronic Mail", "Electrical Mail", "Engineered Mail", "Easy Mail"], ans: 0 },
+
             { id: 90, q: "HTTP ka poora naam kya hai?", options: ["Hypertext Transfer Protocol", "High Text Transfer Protocol", "Hypertext Transfer Path", "Hyper Terminal Transfer Protocol"], ans: 0 },
-            { id: 91, q: "Ek IP Address me kitne bits होते हैं (IPv4)?", options: ["32 bits", "64 bits", "128 bits", "16 bits"], ans: 0 },
+
+            { id: 91, q: "Ek IP Address me kitne bits hote hain (IPv4)?", options: ["32 bits", "64 bits", "128 bits", "16 bits"], ans: 0 },
+
             { id: 92, q: "Wireless internet connection ka udaharan kaun sa hai?", options: ["Wi-Fi", "Ethernet", "Fiber Optics", "Coaxial Cable"], ans: 0 },
+
             { id: 93, q: "Google Chrome kya hai?", options: ["Web Browser", "Search Engine", "Operating System", "Antivirus"], ans: 0 },
+
             { id: 94, q: "Google kya hai?", options: ["Search Engine", "Web Browser", "Social Network", "Database"], ans: 0 },
+
             { id: 95, q: "Unwanted/Unsolicited emails ko kya kehte hain?", options: ["Spam", "Inbox", "Draft", "Trash"], ans: 0 },
+
             { id: 96, q: "LAN ka poora naam kya hai?", options: ["Local Area Network", "Land Area Network", "Logical Area Network", "Large Area Network"], ans: 0 },
+
             { id: 97, q: "WAN ka poora naam kya hai?", options: ["Wide Area Network", "Web Area Network", "World Area Network", "Wireless Area Network"], ans: 0 },
+
             { id: 98, q: "Computer Virus kya hota hai?", options: ["Software Program", "Hardware", "Human Virus", "Dust"], ans: 0 },
+
             { id: 99, q: "PDF ka poora naam kya hai?", options: ["Portable Document Format", "Print Document Format", "Public Document File", "Portable Data Format"], ans: 0 },
+
             { id: 100, q: "Computer me Delete ki gayi files kahan jati hain?", options: ["Recycle Bin", "Control Panel", "Taskbar", "My Computer"], ans: 0 }
+
         ];
+
+
+        // =========================================================
+        // VARIABLES
+        // =========================================================
 
         let questions = [];
         let studentData = {};
         let currentQ = 0;
         let userAnswers = [];
         let visited = [];
+
         let totalTimeInSeconds = 40 * 60;
         let timerInterval;
+
         let examStarted = false;
         let isSubmitted = false;
 
-        /* FULLSCREEN SYSTEM VARIABLES */
+
+        // =========================================================
+        // FULLSCREEN SYSTEM VARIABLES
+        // =========================================================
+
         let warningCount = 0;
         let fullscreenTimer = null;
         let fsTimeLeft = 90;
         let isCountingDown = false;
 
-        /* Font Resizing Logic */
+
+        // =========================================================
+        // FONT RESIZING LOGIC
+        // =========================================================
+
         let currentHeaderFontSize = 18;
         let currentOptionFontSize = 15;
 
         function changeFontSize(delta) {
-            let newHeaderSize = currentHeaderFontSize + delta;
-            let newOptionSize = currentOptionFontSize + delta;
 
-            if (newHeaderSize >= 14 && newHeaderSize <= 28) {
+            let newHeaderSize =
+                currentHeaderFontSize + delta;
+
+            let newOptionSize =
+                currentOptionFontSize + delta;
+
+            if (
+                newHeaderSize >= 14 &&
+                newHeaderSize <= 28
+            ) {
+
                 currentHeaderFontSize = newHeaderSize;
                 currentOptionFontSize = newOptionSize;
+
                 applyFontSize();
             }
         }
 
         function resetFontSize() {
+
             currentHeaderFontSize = 18;
             currentOptionFontSize = 15;
+
             applyFontSize();
         }
 
         function applyFontSize() {
-            const qHeader = document.getElementById("question-text");
-            if (qHeader) qHeader.style.fontSize = currentHeaderFontSize + "px";
 
-            const options = document.querySelectorAll(".option-label");
+            const qHeader =
+                document.getElementById("question-text");
+
+            if (qHeader) {
+                qHeader.style.fontSize =
+                    currentHeaderFontSize + "px";
+            }
+
+            const options =
+                document.querySelectorAll(".option-label");
+
             options.forEach(opt => {
-                opt.style.fontSize = currentOptionFontSize + "px";
+
+                opt.style.fontSize =
+                    currentOptionFontSize + "px";
+
             });
         }
 
-        // Live automatic clock check loop
+
+        // =========================================================
+        // LIVE AUTOMATIC CLOCK CHECK LOOP
+        // =========================================================
+
         function startLiveClockCheck() {
+
             setInterval(() => {
+
                 if (!examStarted && !isSubmitted) {
                     checkExamTiming();
                 }
+
             }, 1000);
         }
 
-        window.addEventListener("DOMContentLoaded", () => {
-            checkExamTiming();
-            startLiveClockCheck();
-        });
+        window.addEventListener(
+            "DOMContentLoaded",
+            () => {
+
+                checkExamTiming();
+                startLiveClockCheck();
+
+            }
+        );
+
+
+        // =========================================================
+        // PALETTE TOGGLE
+        // =========================================================
 
         function togglePalette() {
-            const wrapper = document.getElementById("paletteWrapper");
-            const toggleBtn = document.getElementById("togglePaletteBtn");
-            
+
+            const wrapper =
+                document.getElementById("paletteWrapper");
+
+            const toggleBtn =
+                document.getElementById("togglePaletteBtn");
+
             wrapper.classList.toggle("collapsed");
-            
+
             if (wrapper.classList.contains("collapsed")) {
-                toggleBtn.innerText = "◀"; 
-                toggleBtn.setAttribute("title", "Show Question Palette");
+
+                toggleBtn.innerText = "◀";
+
+                toggleBtn.setAttribute(
+                    "title",
+                    "Show Question Palette"
+                );
+
             } else {
-                toggleBtn.innerText = "▶"; 
-                toggleBtn.setAttribute("title", "Hide Question Palette");
+
+                toggleBtn.innerText = "▶";
+
+                toggleBtn.setAttribute(
+                    "title",
+                    "Hide Question Palette"
+                );
             }
         }
 
+
+        // =========================================================
+        // SIGN UP
+        // =========================================================
+
         function startSignUpProcess() {
+
             openFullScreen();
-            document.getElementById("welcomeOverlay").style.display = "none";
+
+            document.getElementById(
+                "welcomeOverlay"
+            ).style.display = "none";
         }
 
+
+        // =========================================================
+        // EXAM TIMING
+        // =========================================================
+
         function checkExamTiming() {
+
             const now = new Date();
-            const btnStart = document.querySelector(".btn-start");
+
+            const btnStart =
+                document.querySelector(".btn-start");
 
             if (now < EXAM_START_TIME) {
+
                 if (btnStart) {
+
                     btnStart.disabled = true;
-                    let diffSec = Math.floor((EXAM_START_TIME - now) / 1000);
-                    let m = Math.floor(diffSec / 60);
-                    let s = diffSec % 60;
-                    btnStart.innerText = `Exam Starts In: ${m}m ${s < 10 ? "0" : ""}${s}s`;
-                    btnStart.style.background = "#94a3b8";
+
+                    let diffSec =
+                        Math.floor(
+                            (EXAM_START_TIME - now) / 1000
+                        );
+
+                    let m =
+                        Math.floor(diffSec / 60);
+
+                    let s =
+                        diffSec % 60;
+
+                    btnStart.innerText =
+                        `Exam Starts In: ${m}m ${s < 10 ? "0" : ""}${s}s`;
+
+                    btnStart.style.background =
+                        "#94a3b8";
                 }
+
                 return false;
+
             } else if (now > EXAM_END_TIME) {
+
                 if (btnStart) {
+
                     btnStart.disabled = true;
                     btnStart.innerText = "Exam Closed";
                     btnStart.style.background = "#94a3b8";
+
                 }
+
                 return false;
             }
 
             if (btnStart) {
+
                 btnStart.disabled = false;
                 btnStart.innerText = "Start Test";
                 btnStart.style.background = "#2563eb";
+
             }
+
             return true;
         }
 
+
+        // =========================================================
+        // MOBILE VALIDATION
+        // =========================================================
+
         function validateMobile(input) {
-            input.value = input.value.replace(/[^0-9]/g, '');
-            if (input.value.length > 10) input.value = input.value.slice(0, 10);
+
+            input.value =
+                input.value.replace(/[^0-9]/g, '');
+
+            if (input.value.length > 10) {
+                input.value =
+                    input.value.slice(0, 10);
+            }
         }
 
+
+        // =========================================================
+        // SHUFFLE
+        // =========================================================
+
         function shuffleArray(array) {
+
             let arr = [...array];
-            for (let i = arr.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [arr[i], arr[j]] = [arr[j], arr[i]];
+
+            for (
+                let i = arr.length - 1;
+                i > 0;
+                i--
+            ) {
+
+                const j =
+                    Math.floor(
+                        Math.random() * (i + 1)
+                    );
+
+                [arr[i], arr[j]] =
+                    [arr[j], arr[i]];
             }
+
             return arr;
         }
 
         function prepareShuffledQuestions() {
-            let shuffledQ = shuffleArray(rawQuestions);
+
+            let shuffledQ =
+                shuffleArray(rawQuestions);
+
             return shuffledQ.map(qObj => {
-                let correctAnswerText = qObj.options[qObj.ans];
-                let shuffledOptions = shuffleArray(qObj.options);
-                let newAnsIndex = shuffledOptions.indexOf(correctAnswerText);
-                return { id: qObj.id, q: qObj.q, options: shuffledOptions, ans: newAnsIndex };
+
+                let correctAnswerText =
+                    qObj.options[qObj.ans];
+
+                let shuffledOptions =
+                    shuffleArray(qObj.options);
+
+                let newAnsIndex =
+                    shuffledOptions.indexOf(
+                        correctAnswerText
+                    );
+
+                return {
+                    id: qObj.id,
+                    q: qObj.q,
+                    options: shuffledOptions,
+                    ans: newAnsIndex
+                };
             });
         }
 
+
+        // =========================================================
+        // FULLSCREEN
+        // =========================================================
+
         function openFullScreen() {
-            let elem = document.documentElement;
-            let isFull = document.fullscreenElement || document.webkitFullscreenElement || document.msFullscreenElement;
+
+            let elem =
+                document.documentElement;
+
+            let isFull =
+                document.fullscreenElement ||
+                document.webkitFullscreenElement ||
+                document.msFullscreenElement;
+
             if (!isFull) {
-                if (elem.requestFullscreen) elem.requestFullscreen().catch(() => {});
-                else if (elem.webkitRequestFullscreen) elem.webkitRequestFullscreen().catch(() => {});
-                else if (elem.msRequestFullscreen) elem.msRequestFullscreen().catch(() => {});
+
+                if (elem.requestFullscreen)
+                    elem.requestFullscreen().catch(() => {});
+
+                else if (elem.webkitRequestFullscreen)
+                    elem.webkitRequestFullscreen().catch(() => {});
+
+                else if (elem.msRequestFullscreen)
+                    elem.msRequestFullscreen().catch(() => {});
             }
         }
 
+
+        // =========================================================
+        // START EXAM
+        // =========================================================
+
         function startExam() {
+
             if (!checkExamTiming()) return;
 
             studentData = {
-                name: document.getElementById("candidateName").value.trim().toUpperCase(),
-                fatherName: document.getElementById("fatherName").value.trim().toUpperCase(),
-                mobile: document.getElementById("mobileNo").value.trim(),
-                batchTiming: document.getElementById("batchTiming").value
+
+                name:
+                    document
+                        .getElementById("candidateName")
+                        .value
+                        .trim()
+                        .toUpperCase(),
+
+                fatherName:
+                    document
+                        .getElementById("fatherName")
+                        .value
+                        .trim()
+                        .toUpperCase(),
+
+                mobile:
+                    document
+                        .getElementById("mobileNo")
+                        .value
+                        .trim(),
+
+                batchTiming:
+                    document
+                        .getElementById("batchTiming")
+                        .value
             };
 
-            if (!studentData.name || !studentData.fatherName || !studentData.mobile || !studentData.batchTiming) {
-                alert("Kripya saari details sahi se bharein!");
+            if (
+                !studentData.name ||
+                !studentData.fatherName ||
+                !studentData.mobile ||
+                !studentData.batchTiming
+            ) {
+
+                alert(
+                    "Kripya saari details sahi se bharein!"
+                );
+
                 return;
             }
 
             if (studentData.mobile.length !== 10) {
-                alert("Kripya sahi 10-digit Mobile Number darj karein!");
+
+                alert(
+                    "Kripya sahi 10-digit Mobile Number darj karein!"
+                );
+
                 return;
             }
 
-            const todayStr = new Date().toISOString().split('T')[0];
-            const attemptKey = `exam_attempts_${studentData.mobile}_${todayStr}`;
-            let currentAttempts = parseInt(localStorage.getItem(attemptKey) || "0");
+            const todayStr =
+                new Date()
+                    .toISOString()
+                    .split('T')[0];
 
-            if (currentAttempts >= MAX_ATTEMPTS_PER_DAY) {
-                alert(`⛔ ATTEMPT LIMIT EXCEEDED!\n\nमोबाइल नंबर (${studentData.mobile}) आज के लिए अधिकतम ${MAX_ATTEMPTS_PER_DAY} बार परीक्षा दे चुका है।`);
+            const attemptKey =
+                `exam_attempts_${studentData.mobile}_${todayStr}`;
+
+            let currentAttempts =
+                parseInt(
+                    localStorage.getItem(attemptKey) || "0"
+                );
+
+            if (
+                currentAttempts >=
+                MAX_ATTEMPTS_PER_DAY
+            ) {
+
+                alert(
+                    `⛔ ATTEMPT LIMIT EXCEEDED!\n\nमोबाइल नंबर (${studentData.mobile}) आज के लिए अधिकतम ${MAX_ATTEMPTS_PER_DAY} बार परीक्षा दे चुका है।`
+                );
+
                 return;
             }
 
             currentAttempts++;
-            localStorage.setItem(attemptKey, currentAttempts);
 
-            questions = prepareShuffledQuestions();
-            userAnswers = new Array(questions.length).fill(null);
-            visited = new Array(questions.length).fill(false);
+            localStorage.setItem(
+                attemptKey,
+                currentAttempts
+            );
+
+            questions =
+                prepareShuffledQuestions();
+
+            userAnswers =
+                new Array(questions.length)
+                    .fill(null);
+
+            visited =
+                new Array(questions.length)
+                    .fill(false);
 
             openFullScreen();
 
-            document.getElementById("registrationScreen").style.display = "none";
-            document.getElementById("exam-interface").style.display = "flex";
+            document.getElementById(
+                "registrationScreen"
+            ).style.display = "none";
 
-            document.getElementById("disp-name").innerText = studentData.name;
-            document.getElementById("disp-batch").innerText = studentData.batchTiming;
+            document.getElementById(
+                "exam-interface"
+            ).style.display = "flex";
+
+            document.getElementById(
+                "disp-name"
+            ).innerText =
+                studentData.name;
+
+            document.getElementById(
+                "disp-batch"
+            ).innerText =
+                studentData.batchTiming;
 
             examStarted = true;
+
             loadQuestion(0);
+
             startTimer();
         }
 
+
+        // =========================================================
+        // TIMER
+        // =========================================================
+
         function startTimer() {
-            timerInterval = setInterval(() => {
-                if (totalTimeInSeconds <= 0) {
-                    clearInterval(timerInterval);
-                    alert("Time Over! Test auto-submit ho raha hai...");
-                    submitExam(true);
-                } else {
-                    totalTimeInSeconds--;
-                    let m = Math.floor(totalTimeInSeconds / 60);
-                    let s = totalTimeInSeconds % 60;
-                    document.getElementById("timer").innerText = `Time Left: ${m < 10 ? "0" : ""}${m}:${s < 10 ? "0" : ""}${s}`;
-                }
-            }, 1000);
+
+            timerInterval =
+                setInterval(() => {
+
+                    if (totalTimeInSeconds <= 0) {
+
+                        clearInterval(timerInterval);
+
+                        alert(
+                            "Time Over! Test auto-submit ho raha hai..."
+                        );
+
+                        submitExam(true);
+
+                    } else {
+
+                        totalTimeInSeconds--;
+
+                        let m =
+                            Math.floor(
+                                totalTimeInSeconds / 60
+                            );
+
+                        let s =
+                            totalTimeInSeconds % 60;
+
+                        document.getElementById(
+                            "timer"
+                        ).innerText =
+                            `Time Left: ${m < 10 ? "0" : ""}${m}:${s < 10 ? "0" : ""}${s}`;
+                    }
+
+                }, 1000);
         }
 
+
+        // =========================================================
+        // LOAD QUESTION
+        // =========================================================
+
         function loadQuestion(index) {
+
             currentQ = index;
+
             visited[index] = true;
-            const q = questions[index];
-            document.getElementById("question-text").innerText = `${index + 1}. ${q.q}`;
-            
-            const optionsDiv = document.getElementById("options-container");
+
+            const q =
+                questions[index];
+
+            document.getElementById(
+                "question-text"
+            ).innerText =
+                `${index + 1}. ${q.q}`;
+
+            const optionsDiv =
+                document.getElementById(
+                    "options-container"
+                );
+
             optionsDiv.innerHTML = "";
-            
+
             q.options.forEach((opt, i) => {
-                const checked = userAnswers[index] === i ? "checked" : "";
+
+                const checked =
+                    userAnswers[index] === i
+                        ? "checked"
+                        : "";
+
                 optionsDiv.innerHTML += `
                     <label class="option-label">
-                        <input type="radio" name="option" value="${i}" ${checked} onclick="selectOption(${i})"> ${opt}
+                        <input
+                            type="radio"
+                            name="option"
+                            value="${i}"
+                            ${checked}
+                            onclick="selectOption(${i})"
+                        >
+                        ${opt}
                     </label>
                 `;
             });
 
             applyFontSize();
+
             renderPalette();
+
             updateStats();
         }
+
+
+        // =========================================================
+        // SELECT OPTION
+        // =========================================================
 
         function selectOption(index) {
-            userAnswers[currentQ] = index;
+
+            userAnswers[currentQ] =
+                index;
+
             renderPalette();
+
             updateStats();
         }
 
+
+        // =========================================================
+        // CLEAR RESPONSE
+        // =========================================================
+
         function clearResponse() {
-            userAnswers[currentQ] = null;
+
+            userAnswers[currentQ] =
+                null;
+
             loadQuestion(currentQ);
         }
 
+
+        // =========================================================
+        // NEXT / PREVIOUS
+        // =========================================================
+
         function nextQuestion() {
-            if (currentQ < questions.length - 1) loadQuestion(currentQ + 1);
+
+            if (
+                currentQ <
+                questions.length - 1
+            ) {
+                loadQuestion(currentQ + 1);
+            }
         }
 
         function prevQuestion() {
-            if (currentQ > 0) loadQuestion(currentQ - 1);
+
+            if (currentQ > 0) {
+                loadQuestion(currentQ - 1);
+            }
         }
+
+
+        // =========================================================
+        // QUESTION PALETTE
+        // =========================================================
 
         function renderPalette() {
-            const palette = document.getElementById("palette");
+
+            const palette =
+                document.getElementById("palette");
+
             palette.innerHTML = "";
+
             questions.forEach((_, i) => {
+
                 let statusClass = "";
-                if (userAnswers[i] !== null) statusClass = "answered";
-                else if (visited[i]) statusClass = "unanswered";
-                if (i === currentQ) statusClass += " active";
-                palette.innerHTML += `<button class="q-btn ${statusClass}" onclick="loadQuestion(${i})">${i + 1}</button>`;
+
+                if (userAnswers[i] !== null) {
+                    statusClass = "answered";
+                } else if (visited[i]) {
+                    statusClass = "unanswered";
+                }
+
+                if (i === currentQ) {
+                    statusClass += " active";
+                }
+
+                palette.innerHTML += `
+                    <button
+                        class="q-btn ${statusClass}"
+                        onclick="loadQuestion(${i})"
+                    >
+                        ${i + 1}
+                    </button>
+                `;
             });
         }
+
+
+        // =========================================================
+        // STATS
+        // =========================================================
 
         function updateStats() {
-            let attempted = userAnswers.filter(ans => ans !== null).length;
-            document.getElementById("total-q").innerText = questions.length;
-            document.getElementById("attempted-q").innerText = attempted;
-            document.getElementById("exit-count-disp").innerText = warningCount;
+
+            let attempted =
+                userAnswers.filter(
+                    ans => ans !== null
+                ).length;
+
+            document.getElementById(
+                "total-q"
+            ).innerText =
+                questions.length;
+
+            document.getElementById(
+                "attempted-q"
+            ).innerText =
+                attempted;
+
+            document.getElementById(
+                "exit-count-disp"
+            ).innerText =
+                warningCount;
         }
 
-        function submitExam(isAutoSubmit = false) {
+
+        // =========================================================
+        // SUBMIT EXAM
+        // =========================================================
+
+        function submitExam(
+            isAutoSubmit = false
+        ) {
+
             if (isSubmitted) return;
+
             if (!isAutoSubmit) {
-                if (!confirm("Kya aap 100 Marks ka test Submit karna chahte hain?")) return;
+
+                if (
+                    !confirm(
+                        "Kya aap 100 Marks ka test Submit karna chahte hain?"
+                    )
+                ) {
+                    return;
+                }
             }
+
             isSubmitted = true;
+
             clearInterval(timerInterval);
+
             stopNinetySecTimer();
-            
-            const btn = document.getElementById("submitBtn");
+
+            const btn =
+                document.getElementById(
+                    "submitBtn"
+                );
+
             btn.disabled = true;
-            btn.innerText = "Submitting Data...";
-            
+
+            btn.innerText =
+                "Submitting Data...";
+
             let obtainedMarks = 0;
+
             let attemptedCount = 0;
+
             userAnswers.forEach((ans, i) => {
+
                 if (ans !== null) {
+
                     attemptedCount++;
-                    if (ans === questions[i].ans) obtainedMarks += MARKS_PER_QUESTION;
+
+                    if (
+                        ans ===
+                        questions[i].ans
+                    ) {
+                        obtainedMarks +=
+                            MARKS_PER_QUESTION;
+                    }
                 }
             });
-            let unattemptedCount = questions.length - attemptedCount;
-            let resultStatus = obtainedMarks >= PASS_MARKS ? "PASS" : "FAIL";
-            
-            let payload = JSON.stringify({
-                name: studentData.name,
-                fatherName: studentData.fatherName,
-                mobile: studentData.mobile,
-                batchTiming: studentData.batchTiming,
-                attempted: attemptedCount,
-                unattempted: unattemptedCount,
-                marks: `${obtainedMarks} / ${questions.length * MARKS_PER_QUESTION}`,
-                resultStatus: resultStatus,
-                exitCount: warningCount 
-            });
 
-            if (SCRIPT_URL_1) fetch(SCRIPT_URL_1, { method: "POST", mode: "no-cors", headers: { "Content-Type": "application/json" }, body: payload }).catch(() => {});
-            if (SCRIPT_URL_2) fetch(SCRIPT_URL_2, { method: "POST", mode: "no-cors", headers: { "Content-Type": "application/json" }, body: payload }).catch(() => {});
-            if (SCRIPT_URL_3) fetch(SCRIPT_URL_3, { method: "POST", mode: "no-cors", headers: { "Content-Type": "application/json" }, body: payload }).catch(() => {});
+            let unattemptedCount =
+                questions.length -
+                attemptedCount;
 
-            alert(`आपका टेस्ट सफलतापूर्वक सबमिट हो गया है!\n\nछात्र का नाम: ${studentData.name}\nकुल प्रश्न: ${questions.length}\nहल किए गए प्रश्न: ${attemptedCount}\nछोड़े गए प्रश्न: ${unattemptedCount}`);
+            let resultStatus =
+                obtainedMarks >= PASS_MARKS
+                    ? "PASS"
+                    : "FAIL";
+
+            let payload =
+                JSON.stringify({
+
+                    name:
+                        studentData.name,
+
+                    fatherName:
+                        studentData.fatherName,
+
+                    mobile:
+                        studentData.mobile,
+
+                    batchTiming:
+                        studentData.batchTiming,
+
+                    attempted:
+                        attemptedCount,
+
+                    unattempted:
+                        unattemptedCount,
+
+                    marks:
+                        `${obtainedMarks} / ${questions.length * MARKS_PER_QUESTION}`,
+
+                    resultStatus:
+                        resultStatus,
+
+                    exitCount:
+                        warningCount
+                });
+
+
+            if (SCRIPT_URL_1)
+                fetch(
+                    SCRIPT_URL_1,
+                    {
+                        method: "POST",
+                        mode: "no-cors",
+                        headers: {
+                            "Content-Type":
+                                "application/json"
+                        },
+                        body: payload
+                    }
+                ).catch(() => {});
+
+
+            if (SCRIPT_URL_2)
+                fetch(
+                    SCRIPT_URL_2,
+                    {
+                        method: "POST",
+                        mode: "no-cors",
+                        headers: {
+                            "Content-Type":
+                                "application/json"
+                        },
+                        body: payload
+                    }
+                ).catch(() => {});
+
+
+            if (SCRIPT_URL_3)
+                fetch(
+                    SCRIPT_URL_3,
+                    {
+                        method: "POST",
+                        mode: "no-cors",
+                        headers: {
+                            "Content-Type":
+                                "application/json"
+                        },
+                        body: payload
+                    }
+                ).catch(() => {});
+
+
+            alert(
+                `आपका टेस्ट सफलतापूर्वक सबमिट हो गया है!\n\nछात्र का नाम: ${studentData.name}\nकुल प्रश्न: ${questions.length}\nहल किए गए प्रश्न: ${attemptedCount}\nछोड़े गए प्रश्न: ${unattemptedCount}`
+            );
+
             location.reload();
         }
 
-        /* CUSTOM WARNING & FULLSCREEN LOGIC */
-        function checkFullScreen() {
-            if (!examStarted || isSubmitted) return;
 
-            let isFull = document.fullscreenElement || document.webkitFullscreenElement || document.msFullscreenElement;
+        // =========================================================
+        // CUSTOM WARNING & FULLSCREEN LOGIC
+        // =========================================================
+
+        function checkFullScreen() {
+
+            if (
+                !examStarted ||
+                isSubmitted
+            ) return;
+
+            let isFull =
+                document.fullscreenElement ||
+                document.webkitFullscreenElement ||
+                document.msFullscreenElement;
 
             if (!isFull) {
+
                 if (!isCountingDown) {
+
                     triggerNextWarning();
+
                 } else {
-                    document.getElementById("warningModal").style.display = "flex";
+
+                    document.getElementById(
+                        "warningModal"
+                    ).style.display = "flex";
                 }
+
             } else {
+
                 if (warningCount < 3) {
+
                     stopNinetySecTimer();
-                    document.getElementById("warningModal").style.display = "none";
+
+                    document.getElementById(
+                        "warningModal"
+                    ).style.display = "none";
                 }
             }
         }
 
+
         function triggerNextWarning() {
+
             warningCount++;
+
             updateStats();
 
             if (warningCount === 1) {
-                startNinetySecTimer(90, "⚠️ FULLSCREEN WARNING (1/3)", "आप फुल स्क्रीन मोड से बाहर आ चुके हैं। 90 सेकंड के भीतर फुल स्क्रीन में वापस आएं।");
+
+                startNinetySecTimer(
+                    90,
+                    "⚠️ FULLSCREEN WARNING (1/3)",
+                    "आप फुल स्क्रीन मोड से बाहर आ चुके हैं। 90 सेकंड के भीतर फुल स्क्रीन में वापस आएं।"
+                );
+
             } else if (warningCount === 2) {
-                startNinetySecTimer(90, "⚠️ FULLSCREEN WARNING (2/3)", "यह आपकी दूसरी वार्निंग है! 90 सेकंड के भीतर फुल स्क्रीन में वापस आएं।");
+
+                startNinetySecTimer(
+                    90,
+                    "⚠️ FULLSCREEN WARNING (2/3)",
+                    "यह आपकी दूसरी वार्निंग है! 90 सेकंड के भीतर फुल स्क्रीन में वापस आएं।"
+                );
+
             } else if (warningCount >= 3) {
+
                 stopNinetySecTimer();
-                document.getElementById("warningModal").style.display = "none";
-                alert("🚨 SECURITY VIOLATION (3/3): आप 3 बार फुल स्क्रीन मोड से बाहर आए हैं! आपका एग्जाम तुरंत ऑटो-सबमिट किया जा रहा है।");
+
+                document.getElementById(
+                    "warningModal"
+                ).style.display = "none";
+
+                alert(
+                    "🚨 SECURITY VIOLATION (3/3): आप 3 बार फुल स्क्रीन मोड से बाहर आए हैं! आपका एग्जाम तुरंत ऑटो-सबमिट किया जा रहा है।"
+                );
+
                 submitExam(true);
             }
         }
 
-        function startNinetySecTimer(seconds, titleText, msgText) {
+
+        // =========================================================
+        // 90 SECOND FULLSCREEN TIMER
+        // =========================================================
+
+        function startNinetySecTimer(
+            seconds,
+            titleText,
+            msgText
+        ) {
+
             isCountingDown = true;
+
             fsTimeLeft = seconds;
-            
-            document.getElementById("modalTitle").innerText = titleText;
-            document.getElementById("modalMsg").innerText = msgText;
-            document.getElementById("fullscreenCountdown").innerText = fsTimeLeft;
-            document.getElementById("warningModal").style.display = "flex";
-            document.getElementById("modalBtn").style.display = "inline-block";
 
-            if (fullscreenTimer) clearInterval(fullscreenTimer);
+            document.getElementById(
+                "modalTitle"
+            ).innerText =
+                titleText;
 
-            fullscreenTimer = setInterval(() => {
-                fsTimeLeft--;
-                document.getElementById("fullscreenCountdown").innerText = fsTimeLeft;
+            document.getElementById(
+                "modalMsg"
+            ).innerText =
+                msgText;
 
-                if (fsTimeLeft <= 0) {
-                    stopNinetySecTimer();
-                    if (warningCount === 1 || warningCount === 2) {
-                        triggerNextWarning();
+            document.getElementById(
+                "fullscreenCountdown"
+            ).innerText =
+                fsTimeLeft;
+
+            document.getElementById(
+                "warningModal"
+            ).style.display =
+                "flex";
+
+            document.getElementById(
+                "modalBtn"
+            ).style.display =
+                "inline-block";
+
+            if (fullscreenTimer)
+                clearInterval(fullscreenTimer);
+
+            fullscreenTimer =
+                setInterval(() => {
+
+                    fsTimeLeft--;
+
+                    document.getElementById(
+                        "fullscreenCountdown"
+                    ).innerText =
+                        fsTimeLeft;
+
+                    if (fsTimeLeft <= 0) {
+
+                        stopNinetySecTimer();
+
+                        if (
+                            warningCount === 1 ||
+                            warningCount === 2
+                        ) {
+                            triggerNextWarning();
+                        }
                     }
-                }
-            }, 1000);
+
+                }, 1000);
         }
+
 
         function stopNinetySecTimer() {
+
             if (fullscreenTimer) {
-                clearInterval(fullscreenTimer);
+
+                clearInterval(
+                    fullscreenTimer
+                );
+
                 fullscreenTimer = null;
             }
+
             isCountingDown = false;
         }
+
 
         function reEnterFullscreen() {
             openFullScreen();
         }
 
-        document.addEventListener("visibilitychange", function() {
-            if (document.hidden && examStarted && !isSubmitted) {
-                let isFull = document.fullscreenElement || document.webkitFullscreenElement || document.msFullscreenElement;
-                if (!isFull) checkFullScreen();
+
+        // =========================================================
+        // VISIBILITY / FULLSCREEN EVENTS
+        // =========================================================
+
+        document.addEventListener(
+            "visibilitychange",
+            function() {
+
+                if (
+                    document.hidden &&
+                    examStarted &&
+                    !isSubmitted
+                ) {
+
+                    let isFull =
+                        document.fullscreenElement ||
+                        document.webkitFullscreenElement ||
+                        document.msFullscreenElement;
+
+                    if (!isFull)
+                        checkFullScreen();
+                }
             }
-        });
+        );
 
-        document.addEventListener("fullscreenchange", checkFullScreen);
-        document.addEventListener("webkitfullscreenchange", checkFullScreen);
-        document.addEventListener("msfullscreenchange", checkFullScreen);
 
-        document.addEventListener("contextmenu", event => event.preventDefault());
+        document.addEventListener(
+            "fullscreenchange",
+            checkFullScreen
+        );
+
+        document.addEventListener(
+            "webkitfullscreenchange",
+            checkFullScreen
+        );
+
+        document.addEventListener(
+            "msfullscreenchange",
+            checkFullScreen
+        );
+
+
+        // Disable right click
+        document.addEventListener(
+            "contextmenu",
+            event => event.preventDefault()
+        );
+
     </script>
+
 </body>
 </html>
